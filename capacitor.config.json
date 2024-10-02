@@ -1,5 +1,29 @@
 {
   "appId": "com.express.estoque",
   "appName": "Estoque Express",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "backgroundColor": "#ffffff"
+    }
+  },
+  "assets":{
+    "icons": {
+      "android": {
+        "icon": "/resources/icon.png"
+      },
+      "ios": {
+        "icon": "/resources/icon.png"
+      }
+    },
+    "splash": {
+      "android": {
+        "splash": "/resources/splash.png"
+      },
+      "ios": {
+        "splash": "/resources/splash.png"
+      }
+    }
+  }
 }
