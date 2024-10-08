@@ -1,5 +1,6 @@
 import { CapacitorSQLite } from 'capacitor-sqlite';
-const createDatabase = async () => {
+
+export async function createDatabase(){
     try {
         const result = await CapacitorSQLite.createConnection({
             database: 'mydatabase.db',
@@ -44,31 +45,28 @@ const createDatabase = async () => {
     }
 };
 
-const insertUser = async (name) => {
+export async function insertReceita(nome){
     try {
         const result = await CapacitorSQLite.runSQL({
             database: 'mydatabase.db',
-            statement: 'INSERT INTO users (name) VALUES (?)',
-            values: [name],
+            statement: 'INSERT INTO receita (nome) VALUES (?)',
+            values: [nome],
         });
-        console.log('User inserted:', result);
+        return result;
     } catch (error) {
         console.error('Error inserting user:', error);
     }
 };
 
-const getUsers = async () => {
+export async function getReceita() {
     try {
         const result = await CapacitorSQLite.runSQL({
             database: 'mydatabase.db',
-            statement: 'SELECT * FROM users',
+            statement: 'SELECT * FROM receita',
             values: [],
         });
-        console.log('Users:', result.values);
+        return result.values;
     } catch (error) {
         console.error('Error fetching users:', error);
     }
 };
-
-// Exportar as funções para uso em outros arquivos
-export { createDatabase, insertUser, getUsers };

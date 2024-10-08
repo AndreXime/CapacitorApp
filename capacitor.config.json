@@ -1,10 +1,12 @@
 {
   "appId": "com.Cozinha.Cap ",
   "appName": "iCozinha",
-  "webDir": "www",
+  "webDir": "www",  
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
-    }
+    },
+    "CapacitorSQLite": {   }
   }
+  
 }
