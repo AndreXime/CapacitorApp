@@ -4,3 +4,6 @@ node_modules
 # Plataform geradas
 android
 ios
+
+# Auto gerado com npx webpack
+bundle

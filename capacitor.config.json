@@ -3,10 +3,9 @@
   "appName": "iCozinha",
   "webDir": "www",  
   "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    },
-    "CapacitorSQLite": {   }
+    "CapacitorSQLite": { 
+      "androidDatabaseLocation": "default" 
+    }
   }
   
 }

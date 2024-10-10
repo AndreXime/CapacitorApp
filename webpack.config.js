@@ -1,10 +1,26 @@
 const path = require('path');
 
 module.exports = {
-    entry: './www/scripts/indexReceita.js', // ou seu arquivo principal
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'www/scripts'), // destino para o arquivo bundle
+    entry: {
+        receita: './www/scripts/receitas.js',
+        ingredientes: './www/scripts/ingredientes',
+        validade:'./www/scripts/validade',
     },
-    mode: 'development', // ou 'production'
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'www/scripts/bundle'), // destino para o arquivo bundle
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all', // permite que o Webpack divida o código em diferentes bundles
+        },
+    },
+    mode: 'development',
+    ignoreWarnings: [ /source-map-loader/ ],
+    devtool: 'source-map',
+    resolve: {
+        fallback: {
+            fs: false,
+        }
+    },
 };
