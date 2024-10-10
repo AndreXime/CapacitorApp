@@ -1,27 +1,30 @@
-import { createDatabase, insertReceita, getReceita } from "./database.js";
+import { insertReceita, getReceita } from "./database.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await createDatabase();
-    const receitas = document.getElementById('receitas-root');
-    const receitaDiv = document.createElement("div");
-    receitaDiv.classList.add("col-12");
-
+    const root = document.getElementById('root');
     try{
         const values = await getReceita();
         values.forEach(value => {
-            const corpo = `
-                <h2>${value.nome}</h2>
-                <h3>${value.ingredientes}</h3>
-                <h3>${value.utensilios}</h3>
-                <h3>${value.modo}</h3>
-            `;
-            receitaDiv.innerHTML += corpo;
+          const addRoot = document.createElement("div");
+          addRoot.classList.add("col-12");
+          
+          const corpo = `
+            <h2>${value.nome}</h2>
+            <h3>${value.ingredientes}</h3>
+            <h3>${value.utensilios}</h3>
+            <h3>${value.modo}</h3>
+          `;
+          
+          addRoot.innerHTML = corpo;        
+          root.append(addRoot);
         });
-    }catch (err) {
-        receitaDiv.innerHTML = "<h3>Não há nenhuma receita registrada</h3>";        
-    }
-
-    receitas.append(receitaDiv);
+        
+     }catch(err){
+        const addRoot = document.createElement("div");
+        addRoot.classList.add("col-12");
+        addRoot.innerHTML = "<h3>Não há nenhuma receita</h3>";        
+        root.append(addRoot);
+     }           
 });
 
 document.getElementById("Form-receita").addEventListener("submit", (event) => {
