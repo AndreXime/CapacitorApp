@@ -3,7 +3,7 @@ import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
 const sqlite = new SQLiteConnection(CapacitorSQLite);
 let db;
 
-export async function createDatabase(){
+async function createDatabase(){
     try {
         db = await sqlite.createConnection("mydatabase.db", false, "no-encryption", 1);
         await db.open();

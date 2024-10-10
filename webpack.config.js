@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        receita: './www/scripts/receitas.js',
+        receitas: './www/scripts/receitas.js',
         ingredientes: './www/scripts/ingredientes',
         validade:'./www/scripts/validade',
     },
@@ -16,11 +16,19 @@ module.exports = {
         },
     },
     mode: 'development',
-    ignoreWarnings: [ /source-map-loader/ ],
-    devtool: 'source-map',
-    resolve: {
-        fallback: {
-            fs: false,
-        }
+    
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
     },
 };

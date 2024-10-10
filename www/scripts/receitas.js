@@ -1,5 +1,6 @@
 import { insertReceita, getReceita } from "./database.js";
 
+console.log("aqui");
 document.addEventListener('DOMContentLoaded', async () => {
     const root = document.getElementById('root');
     try{
